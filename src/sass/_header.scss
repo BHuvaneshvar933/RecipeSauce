@@ -7,19 +7,28 @@
 
   @media only screen and (max-width: $bp-mobile) {
     flex-direction: column;
-    height: 11rem;
+
     gap: 1rem;
-    padding-top: 1rem;
+
     max-height: $header-size-mobile;
-    background-color: #ffb601;
   }
 
   &__logo {
-    margin-left: 4rem;
+    margin-left: 14rem;
     height: 10rem;
     display: block;
     @media only screen and (max-width: $bp-mobile) {
       margin-left: 0rem;
+    }
+  }
+}
+.h-img {
+  @media only screen and (max-width: $bp-mobile) {
+    width: 100%;
+    background-color: #ffb601;
+    img {
+      margin-left: 20.5rem;
+      margin-top: 1px;
     }
   }
 }
