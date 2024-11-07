@@ -314,7 +314,7 @@ body {
 
 @media only screen and (width <= 43.75em) {
   .header__logo {
-    margin-left: 3rem;
+    margin-left: 0;
   }
 }
 
