@@ -1,0 +1,13 @@
+@import "base";
+@import "components";
+@import "header";
+@import "preview";
+@import "searchResults";
+@import "recipe";
+@import "upload";
+.spin {
+  @media only screen and (max-width: $bp-mobile) {
+    margin-left: 0;
+    border: 1rem black;
+  }
+}
