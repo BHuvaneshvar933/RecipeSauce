@@ -1,7 +1,5 @@
-<h1 align="center">Forkify App</h1>
-<p align="center">
-    <img src="./src/img/favicon.png" alt="Logo" width="15%" height="auto">
- </p>
+<h1 align="center">RecipeSauce</h1>
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/version-2.0.0-blue.svg?cacheSeconds=2592000" />
