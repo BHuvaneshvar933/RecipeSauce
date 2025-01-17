@@ -45,7 +45,7 @@ function Header() {
           >
             <li>
               <Link
-                to="/home"
+                to="/"
                 onClick={closeDropdown}
                 className="block px-4 py-2 text-sm  hover:bg-orange-500"
               >
