@@ -32,7 +32,6 @@ function Home({}) {
             </div>
           </div>
         </div>
-        {/* below image component goes here */}
         <div className="flex flex-col sm:flex-row rounded-xl">
           <div className="basis-full sm:basis-3/4 bg-[#eeeeee] rounded-xl px-4 sm:px-5 pb-4">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -78,7 +77,6 @@ function Home({}) {
             </p>
           </div>
         </div>
-        {/* another part of the web page */}
         <div className="mt-12">
           <center className="leading-relaxed px-4 sm:px-20">
             <h1 className="text-2xl sm:text-3xl font-noto-sans font-semibold mb-1">

@@ -1,73 +1,88 @@
-import { NavLink, Link } from "react-router-dom";
-import { GrFavorite } from "react-icons/gr";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Header() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640); 
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const closeDropdown = () => {
+    if (isMobile) {
+      setIsDropdownOpen(false);
+    }
+  };
+
   return (
-    <div className="sticky top-0 bg-white z-50">
-      <div className="flex items-center justify-between px-5 py-5">
-        <Link to="/" className="hover:scale-110 active:scale-75">
-          <h1 className="font-noto-sans font-bold text-xl">
-          RECIPE<span className="text-orange">SAUCE</span>
-          </h1>
-        </Link>
-
-        <nav className="flex-1 text-center font-noto-sans">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive
-                ? "me-5 font-semibold text-sm touch-pan-up underline decoration-orange"
-                : "me-5 font-normal text-xs hover:text-sm hover:font-medium"
-            }
-          >
-            HOME
-          </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive
-                ? "me-5 font-semibold text-sm touch-pan-up underline decoration-orange"
-                : "me-5 font-normal text-xs hover:text-sm hover:font-medium"
-            }
-          >
-            ABOUT
-          </NavLink>
-          <NavLink
-            to="/recipes"
-            className={({ isActive }) =>
-              isActive
-                ? "me-5 font-semibold text-sm touch-pan-up underline decoration-orange"
-                : "me-5 font-normal text-xs hover:text-sm hover:font-medium"
-            }
-          >
-            RECIPES
-          </NavLink>
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              isActive
-                ? "font-semibold text-sm touch-pan-up underline decoration-orange"
-                : "font-normal text-xs hover:text-sm hover:font-medium"
-            }
-          >
-            CONTACT
-          </NavLink>
-        </nav>
-
-        <NavLink
-          to="/fav"
-          className={({ isActive }) =>
-            isActive
-              ? "text-orange"
-              : "hover:scale-105 active:scale-75"
-          }
+    <header className="  px-6 py-4 flex justify-between items-center">
+      <h1 className="text-2xl font-bold">
+        RECIPE<span className="text-orange">SAUCE</span>
+      </h1>
+      <nav className="relative">
+        <button
+          onClick={toggleDropdown}
+          className=" font-medium hover:text-orange-500 sm:hidden"
         >
-          <div className="ml-auto">
-            <GrFavorite size={27}/>
-          </div>
-        </NavLink>
-      </div>
-    </div>
+          Menu
+        </button>
+        {(isDropdownOpen || !isMobile) && (
+          <ul
+            className={`${
+              isMobile ? "absolute right-0 mt-2 bg-white shadow-lg rounded-md w-40" : "flex space-x-4"
+            }`}
+          >
+            <li>
+              <Link
+                to="/home"
+                onClick={closeDropdown}
+                className="block px-4 py-2 text-sm  hover:bg-orange-500"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/recipes"
+                onClick={closeDropdown}
+                className="block px-4 py-2 text-sm  hover:bg-orange-500"
+              >
+                Recipes
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/about"
+                onClick={closeDropdown}
+                className="block px-4 py-2 text-sm  hover:bg-orange-500"
+              >
+                About Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                onClick={closeDropdown}
+                className="block px-4 py-2 text-sm  hover:bg-orange-500"
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
+        )}
+      </nav>
+    </header>
   );
 }
 
